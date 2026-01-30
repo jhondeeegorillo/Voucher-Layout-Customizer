@@ -282,7 +282,7 @@ aside {
 }
 
 .voucher-textarea {
-  height: 180px;
+  height: 190px;
   background-color: rgb(255, 255, 255);
   border: none;
   border-radius: 30px;
@@ -304,7 +304,7 @@ aside {
 }
 
 .heading-container {
-  padding: 32px 32px 14px;
+  padding: 30px 32px 14px;
 }
 
 .heading-container > div {
@@ -325,7 +325,7 @@ aside {
 }
 
 .logo-img {
-  height: 50px;
+  height: 60px;
   user-select: none;
   pointer-events: none;
   display: block;
@@ -337,7 +337,7 @@ aside {
 .form-container {
   flex-direction: column;
   gap: 20px;
-  padding: 16px 32px;
+  padding: 12px 32px;
   height: calc(100vh - 226px);
   overflow-y: auto;
 }
@@ -811,6 +811,10 @@ dialog button.ok {
     flex-direction: column-reverse;
   }
 
+  .heading-container > p {
+    color: var(--textlight);
+  }
+
   aside {
     width: 100%;
     height: auto;
@@ -823,7 +827,7 @@ dialog button.ok {
   }
 
   main {
-    height: calc(100vh - 64px);
+    height: calc(100vh - 440px);
   }
 
   .header-section {
@@ -831,32 +835,35 @@ dialog button.ok {
   }
 
   .header-container {
-    height: 64px;
+    height: 60px;
+    margin: 14px;
   }
 
   #print-btn {
-    width: 32px;
-    padding: 0;
+    width: 80px;
+    height: 48px;
+    margin-right: -26px;
+  }
+
+  .logo-img {
+    margin-left: -26px;
+    width: auto;
+    height: 48px;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
   }
 
   .heading-container {
     border-bottom: none;
   }
 
-  .heading-container > div {
-    display: flex;
-  }
-
   .heading-container > img {
     display: none;
   }
 
-  .heading-container > p {
-    display: none;
-  }
-
   .form-container {
-    padding: 16px 5%;
+    padding: 0px 5%;
     height: auto;
   }
 
