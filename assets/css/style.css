@@ -111,28 +111,53 @@
 
 :root {
   --page-layout: 13in; 
-  --duration-bg-color: #000000;
-  --duration-text-color: #ffffff;
+  --duration-bg-color: rgb(35 31 32);
+  --duration-text-color: rgb(255, 255, 255);
   --header: rgb(35 31 32);
   --button: rgb(35 31 32);
   --textdark: rgb(35 31 32);
-  --textlight: rgb(125 126 126);
+  --textlight: rgb(255, 255, 255);
+  --texttut: rgb(35 31 32);
   --bg: #ecedee;
   --scroll: rgb(125 126 126);
   --border: #ecedee;
   --printon: rgb(125 126 126);
   --printoff: rgb(125 126 126);
   --error: rgb(255, 0, 0);
+  --card: rgb(255, 255, 255);
+  --brand: rgb(89 90 90);
+  --bak-wall: url(wallpaper.jpg);
 }
 
 html {
   overflow: hidden;
+  scroll-behavior: smooth;
+
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-color: var(--bg);
+  background-image: var(--bak-wall);
+}
+
+.disable-text-selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 * {
   font-family: "Segoe UI Variable Text";
-  color: rgb(255, 255, 255);
+  color: var(--texttut);
   font-size: 14px;
   -webkit-tap-highlight-color: transparent;
   margin: 0;
@@ -176,21 +201,14 @@ button {
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  cursor: pointer;
   user-select: none;
   background-color: var(--button);
-  color: rgb(255, 255, 255);
+  color: var(--textlight);
   border:none;
   width: auto;
   height: 32px;
   gap: 8px;
   padding: 0 24px;
-}
-
-button:hover {
-}
-
-button:active {
 }
 
 button:disabled {
@@ -200,12 +218,28 @@ button:disabled {
   color: rgb(255 255 255 / 50%);
 }
 
+button:hover,
+button:active,
+button:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
+}
+
 .btn-standard {
   flex-direction: row;
   width: auto;
   background-color: var(--button);
-  color: rgb(255 255 255);
+  color: var(--textlight);
   border: none;
+}
+
+.btn-standard:hover,
+.btn-standard:active,
+.btn-standard:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
 }
 
 .print-btn {
@@ -216,29 +250,23 @@ button:disabled {
   border: none;
 }
 
-.btn-standard:hover {
-}
-
-.btn-standard:active {
-  color: rgb(255, 255, 255);
-  border: none;
-}
-
-.btn-standard:disabled {
-  background-color: rgb(125 126 126);
-  color: rgb(255 255 255 / 25%);
-  border: none;
+.print-btn:hover,
+.print-btn:active,
+.print-btn:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--printon);
+  outline-offset:2px;
 }
 
 h1 {
-  font-size: 18px;
-  color: rgb(255 255 255);
+  font-size: 16px;
+  color: var(--textlight);
 }
 
 p {
   font-family: "Segoe UI Variable Small";
   font-size: 12px;
-  color: var(--textlight);
+  color: var(--textdark);
 }
 
 aside {
@@ -254,24 +282,11 @@ aside {
   overflow: hidden;
 }
 
-.input-line {
-}
-
-.input-container .input:focus + .input-line,
-.voucher-textarea .textarea:focus + .input-line {
-}
-
-.input-error {
-}
-
 .input {
   width: 100%;
   height: 100%;
   border: none;
   padding: 0 11px;
-}
-
-.input:focus {
 }
 
 .textarea {
@@ -283,7 +298,7 @@ aside {
 
 .voucher-textarea {
   height: 190px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--card);
   border: none;
   border-radius: 30px;
   overflow: hidden;
@@ -320,7 +335,7 @@ aside {
 
 .heading-container p {
   padding-top: 4px;
-  color: var(--textlight);
+  color: var(--brand);
   text-align: center;
 }
 
@@ -356,6 +371,7 @@ aside {
 .group-option h6 {
   font-family: "Segoe UI Variable Small";
   font-size: 14px;
+  text-align: left;
   font-weight: 500;
   color: var(--textdark);;
 }
@@ -378,14 +394,15 @@ aside {
   height: 32px;
   border-radius: 4px;
   color: var(--textdark);
-  cursor: pointer;
   user-select: none;
 }
 
-.more-settings:hover {
-}
-
-.more-settings:active {
+.more-settings:hover,
+.more-settings:active,
+.more-settings:focus-visible{
+  transform: scale(1.01);
+  border-radius: 50px;
+  outline-offset:2px;
 }
 
 .more-settings-container {
@@ -419,14 +436,24 @@ aside {
   border-radius: 30px;
   border: none;
   color: var(--textdark);
+  background-color: var(--card);
 }
 
 .select-group select {
   appearance: none;
   border-radius: 30px;
   width: auto;
-  padding: 0 26px 0 8px;
+  padding: 0px 12px 0 12px;
   background-color: var(--button);
+  color: var(--textlight);
+}
+
+.select-group select:hover,
+.select-group select:active,
+.select-group select:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
 }
 
 .select-group select option {
@@ -451,8 +478,15 @@ aside {
   height: 20px;
   width: 38px;
   padding: 0 4px;
-  cursor: pointer;
   background-color: var(--button);
+}
+
+.input.color:hover,
+.input.color:active,
+.input.color:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
 }
 
 .input-switch input {
@@ -460,13 +494,19 @@ aside {
 }
 
 .input-switch label {
-  cursor: pointer;
-  transition: all 100ms;
   background-color: var(--button);
   width: 38px;
   height: 20px;
   border: none;
   border-radius: 10px;
+}
+
+.input-switch label:hover,
+.input-switch label:active,
+.input-switch label:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
 }
 
 .input-switch label::after {
@@ -482,26 +522,22 @@ aside {
   border-radius: 50%;
 }
 
-.input-switch:hover label {
-}
-
-.input-switch:hover label::after {
-}
-
 .input-switch input:checked ~ label {
   background-color: var(--button);
   border: none;
 }
 
+.input-switch input:checked ~ label:hover,
+.input-switch input:checked ~ label:active,
+.input-switch input:checked ~ label:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
+}
+
 .input-switch input:checked ~ label::after {
   background-color: #ffffff;
   left: 21px;
-}
-
-.input-switch:hover input:checked ~ label {
-}
-
-.input-switch:hover input:checked ~ span {
 }
 
 main {
@@ -512,10 +548,9 @@ main {
 
 .header-section {
   z-index: 1;
-    position: sticky;
-    top: 0;
-    padding: 30px 42px 55px;
-    background-color: var(--bg);
+  position: sticky;
+  top: 0;
+  padding: 30px 42px 55px;
 }
 
 .header-container {
@@ -549,8 +584,9 @@ main {
   flex-shrink: 0;
   height: 96px;
   width: 154px;
-  outline: #7d7e7e solid 1px;
+  outline: #000000 solid 1px;
   overflow: hidden;
+  padding: 8px;
 }
 
 .voucher-container .logo {
@@ -559,15 +595,17 @@ main {
   background-repeat: no-repeat;
   user-select: none;
   height: 25px;
-  margin: 8px 0 8px 10px;
 }
 
 .voucher-container p {
   font-family: "Segoe UI Variable Display";
   color: #000000;
   font-size: 22px;
-  margin: -10px 0px 0px 10px;
   font-weight: bold;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
 }
 
 /*.voucher-container p::after {
@@ -581,26 +619,26 @@ main {
 
 .voucher-container span {
   user-select: none;
-  bottom: 8px;
-  left: 10px;
   font-family: "Segoe UI Variable Display";
   font-weight: bold;
   font-size: 14px;
-  text-align: center;
-  line-height: 23px;
+  height: 25px;
   color: var(--duration-text-color);
   background-color: var(--duration-bg-color);
-  height: 24px;
-  min-width: 44px;
-  padding: 0 10px;
   border-radius: 30px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+  justify-items: center;
 }
 
 .get-started {
   flex-direction: column;
-  gap: 56px;
+  gap: 42px;
   align-items: center;
-  margin-top: 50px;
 }
 
 .get-started > i {
@@ -618,7 +656,11 @@ main {
 .get-started h2 {
   font-size: 16px;
   text-align: center;
-  color: var(--textdark);
+  color: var(--texttut);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .get-started p {
@@ -631,23 +673,24 @@ main {
 .get-started u {
   font-size: 12px;
   color: var(--textdark);
-  cursor: pointer;
 }
 
-dialog::backdrop {
-  background-color: rgb(236 237 238 / 0%);
+dialog:-internal-dialog-in-top-layer::backdrop {
+    position: fixed;
+    background-color: transparent;
+    inset: 0px;
+    backdrop-filter: blur(25px);
 }
 
 dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -34%);
+  margin: auto;
   flex-direction: column;
   background-color: #ffffff;
   border: none;
+  padding: 20px;
   border-radius: 30px;
-  width: 675px;
+  --max-width: 48rem;
+  width: min(90% - 0rem, var(--max-width));
   opacity: 0;
 }
 
@@ -658,35 +701,40 @@ dialog.open {
 dialog header {
   justify-content: space-between;
   align-items: center;
-  padding: 15px 15px 0px 15px;
+  margin-bottom: 10px;
 }
 
-.btn-close {
-  background-color: var(--button);
-  color: #ffffff;
-  border: none;
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
   width: 30px;
   height: 30px;
-  padding: 0 0 0 2px;
+  background-color: var(--button);
   border-radius: 100px;
+  color: var(--duration-text-color);
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
 }
 
-.btn-close:hover {
-}
-
-.btn-close:active {
-  color: rgb(255, 255, 255);
-  border: none;
+.close:hover{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
 }
 
 a{
-  color: var(--textdark);
+  color: var(--duration-text-color);
+  text-decoration: none;
 }
 
 dialog .body {
   flex-direction: column;
   gap: 20px;
-  padding: 0 15px 0 15px;
 }
 
 dialog .body p {
@@ -701,7 +749,7 @@ dialog .body * {
 dialog .body ol {
   flex-direction: column;
   gap: 20px;
-  height: 260px;
+  height: 60vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -709,12 +757,17 @@ dialog .body ol {
 dialog .body ol li {
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 5px;
 }
 
 dialog .body ol li p {
   width: auto;
   max-width: 100%;
+  color: var(--texttut);
+  -webkit-user-select: none; /* Safari, Chrome, Opera */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE 10+ */
+  user-select: none;
 }
 
 dialog .body ol li img {
@@ -735,7 +788,8 @@ dialog .body ol li img {
 .code-block,
 .code-block * {
   font-family: Consolas, "Courier New", monospace;
-  line-height: 1.6;
+  line-height: 1;
+  text-align: left;
 }
 
 .code-block button {
@@ -748,11 +802,26 @@ dialog .body ol li img {
   background-color: var(--button);
 }
 
+.code-block button:hover,
+.code-block button:active,
+.code-block button:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
+}
+
 dialog button.ok {
   margin: auto;
-  margin-top: 15px;
-  margin-bottom: 16px;
-  background-color: var(--button)
+  margin-top: 10px;
+  background-color: var(--button);
+}
+
+dialog button.ok:hover,
+dialog button.ok:active,
+dialog button.ok:focus-visible{
+  transform: scale(1.01);
+  outline: 2px solid var(--button);
+  outline-offset:2px;
 }
 
 .blue {
@@ -814,8 +883,9 @@ dialog button.ok {
     flex-direction: column-reverse;
   }
 
-  .heading-container > p {
-    color: var(--textlight);
+  h1 {
+    font-size: 16px;
+    color: transparent;
   }
 
   aside {
@@ -830,20 +900,17 @@ dialog button.ok {
   }
 
   main {
-    height: calc(100vh - 440px);
+    height: calc(100vh - 380px);
   }
 
   dialog {
-    position: relative;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, 30%) scale(1);
+    top: 0px;
   }
 
   dialog .body ol {
     flex-direction: column;
     gap: 20px;
-    height: 160px;
+    height: 60vh;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -859,13 +926,17 @@ dialog button.ok {
     padding: 6px 5px 6px;
   }
 
+
   .header-container {
     height: 60px;
     margin: 14px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header);
   }
 
   #print-btn {
-    width: 80px;
+    width: 48px;
     height: 48px;
     margin-right: -26px;
   }

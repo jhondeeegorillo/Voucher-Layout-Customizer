@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#F1F3F9" />
     <title>Voucher Layout Customizer</title>
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/png/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/script.js" defer></script>
   </head>
-  <body class="flex">
+  <body class="flex portal disable-text-selection">
     <aside class="relative flex">
       <section class="relative heading-container">
         <div>
@@ -18,7 +18,7 @@
           <p>Scroll up from here to edit vouchers</p>
         </div>
         <img src="assets/png/logo.png" alt="Logo" class="logo-img" />
-        <p>© 2026 G WIFI. All rights reserved.</p>
+        <p>&#169; 2026 G WIFI. All rights reserved.</p>
       </section>
       <section class="flex form-container">
         <div class="flex group">
@@ -34,7 +34,6 @@
                 <option value="hr">Hours</option>
                 <option value="day">Days</option>
               </select>
-              <i class="absolute icon">&#xe70d;</i>
             </div>
           </div>
           <p id="duration-error-msg" class="hidden">Enter a valid duration.</p>
@@ -101,14 +100,9 @@
             <dialog id="learn-more-dialog">
               <header class="flex">
                 <h2>Tutorial</h2>
-                <button id="dialog-close-btn" class="btn-close icon">&#xe711;</button>
+                <span id="dialog-close-btn" class="close">&times;</span>
               </header>
               <div class="flex body">
-                <p>
-                  <a href="https://youtu.be/5-gXagYhf6Q?si=zDTLwXlDfg5e-IPd" target="_blank">
-                    Full tutorial here
-                  </a>.
-                </p>
                 <ol class="flex">
                   <li class="flex">
                     <p>1. Copy this code to your clipboard.</p>
@@ -154,7 +148,10 @@
                   </li>
                 </ol>
               </div>
-              <button class="ok">OK</button>
+              <button class="ok">
+                <a href="https://youtu.be/5-gXagYhf6Q?si=zDTLwXlDfg5e-IPd" target="_blank">Full tutorial here
+                </a>
+              </button>
             </dialog>
           </div>
           <button id="copy-code-btn" class="btn-standard">Copy code</button>
