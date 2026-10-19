@@ -18,9 +18,17 @@ const dialogCloseBtn = document.getElementById("dialog-close-btn");
 const copyCodeBtn = document.getElementById("copy-code-btn");
 const copyCodeBlockBtn = document.querySelector(".code-block button");
 let lineCountCache = 0;
-const codeText = `let scrapedCodes = "";\n
-document.querySelectorAll("[name='code'] .td-content .content").forEach((elmnt) => {scrapedCodes += elmnt.innerText + "\\n"});\n
-console.log(scrapedCodes);`;
+const codeText = `const codes = Array.from(document.querySelectorAll('tbody tr'))
+  .map(row => {
+    const el = row.querySelector('.s-table-body-cell-content, td:nth-child(2)');
+    return el ? el.innerText.trim() : null;
+  })
+  .filter(text => text && /^[a-zA-Z0-9]{6,10}$/.test(text));
+
+console.log(\`Total codes found and copied: \${codes.length}\`);
+console.log(codes.join('\\n'));
+
+copy(codes.join('\\n'));`;
 
 moreSettingsBtn.onchange = () => {
   if (moreSettingsBtn.checked) {

@@ -80,7 +80,7 @@
         </div>
       </section>
       <section class="absolute form-footer">
-        <button id="data-submit-btn">Save changes</button>
+        <button id="data-submit-btn">Save Changes</button>
       </section>
     </aside>
     <main>
@@ -92,10 +92,14 @@
       </header>
       <section class="flex voucher-preview-container">
         <div class="flex get-started">
+          <div>
+            <button id="learn-more-btn" class="btn-standard">Tutorial</button>
+            <button id="copy-code-btn" class="btn-standard">Copy code</button>
+          </div>
           <div class="flex">
             <p>
-              Copy the code, then paste it into the Console drawer. <br/>
-              <u id="learn-more-btn">Tutorial</u>
+              Copy the code, then paste it into the Console drawer.<br/>
+              Note: Add special characters or symbols to your 'Vouchers Group Name' so that it cannot be copied as a voucher code.
             </p>
             <dialog id="learn-more-dialog">
               <header class="flex">
@@ -108,41 +112,35 @@
                     <p>1. Copy this code to your clipboard.</p>
                     <div class="relative code-block">
                       <button class="absolute btn-standard icon" title="Copy to clipboard">&#xe8c8;</button>
-                      <span class="blue">let</span>
-                      <span class="skyblue">scrapedCodes</span>
-                      <span>=</span>
-                      <span class="string">""</span><span>;</span><br />
-                      <span class="skyblue">document</span><span>.</span><span class="yellow">querySelectorAll</span
-                      ><span class="gold">(</span><span class="string">"[name='code'] .td-content .content"</span
-                      ><span class="gold">)</span><span>.</span><span class="yellow">forEach</span
-                      ><span class="gold">(</span><span class="skyblue">elmnt</span>
-                      <span class="blue">=></span>
-                      <span class="magenta">{</span><span class="skyblue">scrapedCodes</span>
-                      <span>+=</span>
-                      <span class="skyblue">elmnt</span><span>.</span><span class="skyblue">innerText</span>
-                      <span>+</span>
-                      <span class="string">"</span><span class="orange">\n</span><span class="string">"</span
-                      ><span class="magenta">}</span><span class="gold">)</span><span>;</span><br />
-                      <span class="skyblue">console</span><span>.</span><span class="yellow">log</span
-                      ><span class="gold">(</span><span class="skyblue">scrapedCodes</span><span class="gold">)</span
-                      ><span>;</span>
+                      <span>const codes = Array.from(document.querySelectorAll('tbody tr'))
+  .map(row => {
+    const el = row.querySelector('.s-table-body-cell-content, td:nth-child(2)');
+    return el ? el.innerText.trim() : null;
+  })
+
+  .filter(text => text && /^[a-zA-Z0-9]{6,10}$/.test(text));
+
+console.log(`Total codes found and copied: ${codes.length}`);
+console.log(codes.join('\n'));
+
+copy(codes.join('\n'));</span>
                     </div>
                   </li>
                   <li class="flex">
                     <p>
-                      2. Go to the Omada Controller tab. In the Voucher Manager section, select '50/page' to speed up the voucher code scraping process.
+                      2. Go to the voucher section in your Omada Controller tab and select the maximum number of codes per page to speed up the scraping process.
                     </p>
                     <img src="img/50-per-page.jpg" alt="50/page" />
                   </li>
                   <li class="flex">
                     <p>
-                      3. Press F12 or right-click and select Inspect to open the browser's Developer Tools. Switch to the Console tab, paste the code (Ctrl+V), and press Enter.
+                      3. Press the F12 key (or right-click and select 'Inspect') to open the browser developer tools, paste the script into the console tab, and press Enter.
                     </p>
                     <img src="img/console-drawer.jpg" alt="Console drawer" />
                   </li>
                   <li class="flex">
                     <p>
-                      4. Copy all voucher codes, then switch to the Voucher Layout Customizer tab and paste them into the Voucher Codes text area. Repeat this process until you have collected all the codes.
+                      4. Go to the Voucher Layout Customizer tab and paste them into the voucher codes text area. Repeat this process until you have copied all the voucher codes you want to print.
                     </p>
                     <img src="img/copy-paste-codes.jpg" alt="Copy & Paste the voucher codes" />
                   </li>
@@ -154,7 +152,6 @@
               </button>
             </dialog>
           </div>
-          <button id="copy-code-btn" class="btn-standard">Copy code</button>
         </div>
       </section>
     </main>
